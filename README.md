@@ -1,142 +1,82 @@
-🚀 Intelligent Document Q&A Platform (RAG)
+RAGworks
 
-A production-grade Retrieval-Augmented Generation (RAG) application that allows users to securely query documents using namespace-based semantic retrieval, powered by a modern Next.js frontend, JWT authentication, and a scalable backend architecture.
+An intelligent document Q&A platform powered by Retrieval-Augmented Generation (RAG), enabling secure, context-aware querying of PDF documents with namespace-based isolation.
 
-Built for multi-user and multi-dataset isolation, making it suitable for enterprise knowledge bases, documentation search, and AI-powered assistants.
 
-✨ Key Features
-🔐 Authentication & Security
+Overview
+RAGworks is a production-ready document Q&A system that combines PDF processing, vector search, and Large Language Models to provide accurate, context-aware answers. Built with enterprise-grade security and multi-tenant architecture, it's ideal for knowledge bases, internal documentation, and AI-powered customer support.
+Key Differentiator: Namespace-based vector storage using Pinecone ensures complete data isolation between users and document sets, preventing information leakage while maintaining high retrieval accuracy.
 
-JWT-based authentication
+Features
+🔐 Secure Authentication
 
-Secure user sessions
+JWT-based user authentication
+User credential storage with SQLAlchemy
+Protected API endpoints
+Session management with token-based access control
 
-Protected backend APIs
+📄 PDF Document Processing
 
-Token-based access control
+Upload PDFs up to 10MB
+Automatic text extraction and chunking
+Mistral-powered embedding generation
+Persistent knowledge base storage in Pinecone
 
-📚 Namespace-Based Text Retrieval
+🧠 Intelligent Retrieval
 
-Each document set is indexed under its own namespace
+Namespace isolation - Each user/document set gets a dedicated Pinecone namespace
+Semantic search using Mistral embeddings
+Context-aware answer generation with Mistral LLM
+Reduced hallucinations through grounded retrieval
 
-Prevents cross-user and cross-document data leakage
+💻 Modern Tech Stack
 
-Improves retrieval accuracy and relevance
+Frontend: Next.js 14, React, TypeScript, Tailwind CSS
+Backend: Flask, SQLAlchemy, JWT authentication
+AI/ML: Mistral AI (LLM + Embeddings)
+Vector Database: Pinecone (namespace-based storage)
+User Database: SQLAlchemy
+Deployment: Vercel (Frontend), Cloud hosting (Backend)
 
-Scales cleanly for multi-tenant systems
 
-🧠 Retrieval-Augmented Generation (RAG)
+Screenshots
+<div align="center">
+Authentication
+<img src="auth.png" alt="Login Page" width="800"/>
+Knowledge Base Management
+<img src="home.png" alt="Home Page" width="800"/>
+Interactive Q&A
+<img src="q&a.png" alt="Question Answering Interface" width="800"/>
+</div>
 
-Context retrieval before LLM inference
+Architecture
+┌─────────────────┐
+│  User Browser   │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────────────────┐
+│   Next.js Frontend          │
+│   • Auth UI                 │
+│   • PDF Upload              │
+│   • Chat Interface          │
+└────────┬────────────────────┘
+         │
+         ▼
+┌─────────────────────────────┐
+│   Flask Backend API         │
+│   • JWT Validation          │
+│   • PDF Processing          │
+│   • Vector Operations       │
+└────────┬────────────────────┘
+         │
+         ├────────────────┬────────────────────┐
+         ▼                ▼                    ▼
+┌──────────────┐  ┌──────────────┐  ┌─────────────────┐
+│ SQLAlchemy   │  │   Pinecone   │  │   Mistral AI    │
+│ (User Data)  │  │  (Vectors)   │  │  • Embeddings   │
+│              │  │  Namespaced  │  │  • LLM          │
+└──────────────┘  └──────────────┘  └─────────────────┘
 
-Reduced hallucinations
-
-High-precision, context-aware responses
-
-🖥️ Modern Frontend (Next.js)
-
-Built with Next.js
-
-Clean routing and API integration
-
-Responsive and user-friendly UI
-
-🎨 Improved UI/UX
-
-Clear auth, home, and Q&A flows
-
-Minimal and intuitive interface
-
-Improved user experience
-
-🖼️ Screenshots
-🔑 Authentication
-<a href="./auth.png" target="_blank"> <img src="./auth.png" alt="Authentication Page" width="800"/> </a>
-🏠 Home Page
-<a href="./home.png" target="_blank"> <img src="./home.png" alt="Home Page" width="800"/> </a>
-💬 Document Q&A
-<a href="./q&a.png" target="_blank"> <img src="./q&a.png" alt="Document Q&A" width="800"/> </a>
-🏗️ System Architecture
-User (Browser)
-   │
-   ▼
-Next.js Frontend
-   │
-   ▼
-Backend API
-   ├── JWT Authentication
-   ├── Document Ingestion
-   ├── Namespace-based Vector Retrieval
-   ├── Vector Database
-   └── LLM (RAG Pipeline)
-
-🧩 Tech Stack
-Frontend
-
-Next.js
-
-React
-
-Modern UI components
-
-Backend
-
-Python
-
-REST APIs
-
-JWT authentication
-
-AI / NLP
-
-Embedding models
-
-Namespace-based vector search
-
-Large Language Models (LLMs)
-
-Storage
-
-Vector database (namespaced indexing)
-
-Document storage
-
-🔍 Why Namespace-Based Retrieval?
-
-Most RAG systems store all embeddings together, which can cause:
-
-Irrelevant context retrieval
-
-Security and data isolation issues
-
-This project solves that by:
-
-Assigning separate namespaces per dataset/user
-
-Querying only within the relevant namespace
-
-Improving both accuracy and security
-
-📈 Key Improvements
-
-✅ Namespace-based semantic retrieval
-
-✅ Next.js frontend
-
-✅ JWT authentication
-
-✅ Improved UI/UX
-
-✅ Production-ready architecture
-
-🛣️ Future Enhancements
-
-Role-based access control (RBAC)
-
-Document upload and management dashboard
-
-Streaming LLM responses
-
-Multi-model support
-
-Usage analytics
+Tech Stack
+ComponentTechnologyPurposeFrontendNext.js 14, React, TypeScriptUser interface and interactionBackendFlaskREST API serverAuthenticationJWT, SQLAlchemyUser management and authVector DatabasePineconeNamespace-based vector storageEmbeddingsMistral EmbeddingsDocument and query vectorizationLLMMistral AIAnswer generationUser DatabaseSQLAlchemyUser credentials and metadata
