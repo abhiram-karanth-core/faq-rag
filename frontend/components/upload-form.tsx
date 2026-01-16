@@ -34,7 +34,7 @@ export function UploadForm() {
         formData.append("file", file)
 
         try {
-            const res = await fetch("http://localhost:5000/upload", {
+            const res = await fetch("https://ragworks.onrender.com/upload", {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${token}` },
                 body: formData,
@@ -62,7 +62,7 @@ export function UploadForm() {
 
         setDeleteLoading(true)
         try {
-            const res = await fetch("http://localhost:5000/delete_uploads", {
+            const res = await fetch("https://ragworks.onrender.com/delete_uploads", {
                 method: "DELETE",
                 headers: { "Authorization": `Bearer ${token}` }
             })
