@@ -10,3 +10,13 @@ langchain-mistralai
 gunicorn
 psycopg[binary]
 gunicorn
+unstructured[pdf]==0.12.6
+pillow>=10.0.0
+opencv-python>=4.9.0.80
+pytesseract>=0.3.10
+
+pdfminer.six>=20221105
+pymupdf>=1.23.8
+python-magic>=0.4.27
+
+numpy>=1.26.0
