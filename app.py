@@ -31,7 +31,7 @@ jwt = JWTManager(app)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.String(120), nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -55,7 +55,7 @@ embeddings_model = MistralAIEmbeddings(model="mistral-embed")
 
 
 # ---------------- AUTH ROUTES ----------------
-@app.route("/auth", methods=["POST"])
+@app.route("/register", methods=["POST"])
 def register():
     data = request.json
     username = data.get("username")
